@@ -1,9 +1,8 @@
 import fetch from 'dva/fetch';
-
-const ENV = process.env.NODE_ENV;
-
+import conf from '@/config/config';
+console.log(conf)
 const config = {
-  baseURL:(ENV==='development') ? '' : 'http://api.xxx.com/',
+  baseURL:(conf==='development') ? 'http://api.xx.com/' : 'http://api.xxx.com/',
   timeout:10000
 }
 

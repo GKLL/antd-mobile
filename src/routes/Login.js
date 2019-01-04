@@ -1,11 +1,34 @@
 import React from 'react';
 import { connect } from 'dva';
-import styles from './IndexPage.css';
-import { Button, WhiteSpace, WingBlank } from 'antd-mobile';
-function IndexPage() {
+import styles from './Home.less';
+// import { Button, WhiteSpace, WingBlank } from 'antd-mobile';
+import Picture from '@/components/Picture';
+function IndexPage({dispatch, example}) {
+  const {picView, picIndex} = example
+  const AppProps = {
+    picView: picView,
+    picIndex: picIndex,
+    toggleIndex(index) {
+      dispatch({
+        type: 'example/changeViewer',
+        payload: {
+          picView: true,
+        }
+      })
+    },
+    toggleView() {
+      dispatch({
+        type: 'example/changeViewer',
+        payload: {
+          picView: false
+        }
+      })
+    },
+  }
   return (
     <div className={styles.normal}>
-      <WingBlank>
+      <Picture {...AppProps}/>
+      {/* <WingBlank>
         <Button>default</Button><WhiteSpace />
         <Button disabled>default disabled</Button><WhiteSpace />
         <Button type="primary">primary</Button><WhiteSpace />
@@ -19,7 +42,7 @@ function IndexPage() {
         <Button icon={<img src="https://gw.alipayobjects.com/zos/rmsportal/jBfVSpDwPbitsABtDDlB.svg" alt="" />}>with custom icon</Button><WhiteSpace />
         <Button icon="check-circle-o" inline size="small" style={{ marginRight: '4px' }}>with icon and inline</Button>
         <Button icon="check-circle-o" inline size="small">with icon and inline</Button>
-      </WingBlank>
+      </WingBlank> */}
     </div>
   );
 }
@@ -27,4 +50,11 @@ function IndexPage() {
 IndexPage.propTypes = {
 };
 
-export default connect()(IndexPage);
+
+function  mapStateToProps({example}) {
+	return {
+		example
+	};
+}
+
+export default connect(mapStateToProps)(IndexPage);

@@ -1,7 +1,7 @@
 import dva from 'dva';
-import './index.css';
+import './index.less';
 import createLoading from 'dva-loading';
-import  FastClick  from  'fastclick';
+import initReactFastclick from 'react-fastclick';
 // 1. Initialize
 const app = dva();
 
@@ -15,6 +15,6 @@ app.use(createLoading());
 app.router(require('./router').default);
 
 // 5. Start
+initReactFastclick(); // 解决在移动端延迟300毫秒的问题
 app.start('#root');
-FastClick.attach(document.body); //解决在移动端延迟问题
-export default app._store; // eslint-disable-line
+export default app._store;

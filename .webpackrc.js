@@ -17,5 +17,8 @@ export default {
     "development":{
       publicPath: '/',
     }
-  }
+  },
+  theme: {
+    "@primary-color": "#1DA57A"
+  },
 }
