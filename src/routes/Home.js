@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import styles from './Home.less';
 import { Flex } from 'antd-mobile';
 import HrTitle from '@/components/HrTitle';
-function IndexPage({dispatch, example}) {
+function Home({dispatch, example}) {
   const imgs = {
     homeBg: require('../assets/images/home_bg.jpg'),
     lock: require('../assets/images/smart_lock.jpg'),
@@ -52,7 +52,7 @@ const Products = () => {
   );
 }
 
-IndexPage.propTypes = {
+Home.propTypes = {
 };
 
 
@@ -62,4 +62,4 @@ function  mapStateToProps({example}) {
 	};
 }
 
-export default connect(mapStateToProps)(IndexPage);
+export default connect(mapStateToProps)(Home);
